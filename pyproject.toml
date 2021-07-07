@@ -7,6 +7,7 @@ authors = ["Herson Oliveira <oliveira.herson@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 click = "^8.0.1"
+SQLAlchemy = "^1.4.20"
 
 [tool.poetry.dev-dependencies]
 
