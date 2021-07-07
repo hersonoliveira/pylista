@@ -1,5 +1,6 @@
 import click
 from . import task
+from pylista.utils import create_pylista_dir
 
 
 @click.group()
@@ -24,7 +25,7 @@ def done():
 @cli.command()
 def list():
     """List tasks"""
-    pass
+    create_pylista_dir()
 
 
 @cli.command()
