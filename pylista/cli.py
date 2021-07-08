@@ -1,5 +1,5 @@
 import click
-from pylista.task import create_json_file, add_note_to_list
+from pylista.task import create_json_file, add_note_to_list, get_list_file
 from pylista.utils import create_pylista_dir
 import os
 from pylista.defaults import LISTS_DIR
@@ -20,7 +20,7 @@ def add(list, note):
     if not os.path.exists(list_path):
         click.secho("List doesn't exist!")
     else:
-        add_note_to_list(note, list)
+        add_note_to_list(note, list_path)
         click.secho(f"Note added to list {list}")
 
 
@@ -34,7 +34,8 @@ def remove():
 @click.argument("list")
 def list(list):
     """List notes"""
-    # create_pylista_dir()
+    list_path = _make_path_to_list(list)
+    print(get_list_file(list_path))
 
 
 @cli.command()
@@ -50,3 +51,7 @@ def new_list(list):
     else:
         # create list
         create_json_file(list)
+
+
+def _make_path_to_list(list: str) -> str:
+    return os.path.join(LISTS_DIR, f"{list}.json")
