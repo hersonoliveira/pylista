@@ -1,7 +1,6 @@
 import os
 import json
 import click
-from sqlalchemy.sql.operators import op
 
 from pylista.defaults import LISTS_DIR
 
