@@ -44,3 +44,10 @@ def print_notes(l: list) -> None:
     Format a python list of notes to print
     """
     pass
+
+
+def remove_note_from_list(id: int) -> None:
+    """
+    Remove a note from list by id
+    """
+    pass

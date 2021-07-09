@@ -1,8 +1,9 @@
-import click
-from pylista.task import create_json_file, add_note_to_list, get_list_file
-from pylista.utils import create_pylista_dir
 import os
+
+import click
+
 from pylista.defaults import LISTS_DIR
+from pylista.lists import add_note_to_list, create_json_file, get_list_file
 
 
 @click.group()
@@ -16,7 +17,8 @@ def cli():
 @click.argument("note")
 def add(list, note):
     """Add a new task"""
-    list_path = os.path.join(LISTS_DIR, f"{list}.json")
+    list_path = _make_path_to_list(list)
+
     if not os.path.exists(list_path):
         click.secho("List doesn't exist!")
     else:
@@ -49,7 +51,6 @@ def new_list(list):
     if os.path.exists(new_list):
         click.secho("List is already present!")
     else:
-        # create list
         create_json_file(list)
 
 
