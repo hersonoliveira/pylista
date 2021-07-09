@@ -9,7 +9,7 @@ from pylista.lists import (add_note_to_list, create_json_file,
 
 @click.group()
 def cli():
-    """A simple cli list app"""
+    """A simple CLI tool to manage lists"""
     pass
 
 

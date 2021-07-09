@@ -40,11 +40,13 @@ def get_notes_from_list(list_path: str) -> list:
     return data["notes"]
 
 
-def print_notes(l: list) -> None:
+def print_notes(list_obj: list) -> None:
     """
     Format a python list of notes to print
     """
-    print(l)
+    print("\n")
+    for i, l in enumerate(list_obj):
+        print(f"\t{i}: {l}\n")
 
 
 def remove_note_from_list(id: int) -> None:
