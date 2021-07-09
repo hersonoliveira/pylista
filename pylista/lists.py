@@ -1,12 +1,13 @@
-import os
 import json
-import click
+import os
 
 from pylista.defaults import LISTS_DIR
 
 
-def create_json_file(list_name: str) -> None:
-    """Create a json file if it does not exist"""
+def create_json_file(list_name: str) -> str:
+    """
+    Create a json file if it does not exist
+    """
     if not os.path.exists(LISTS_DIR):
         os.makedirs(LISTS_DIR)
 
@@ -16,7 +17,7 @@ def create_json_file(list_name: str) -> None:
         }
     with open(f"{path}.json", "w+") as f:
         json.dump(data, f)
-    click.secho(f"List created: {path}")
+    return path
 
 
 def add_note_to_list(note: str, list_path: str):
@@ -30,7 +31,7 @@ def add_note_to_list(note: str, list_path: str):
         json.dump(data, json_file)
 
 
-def get_list_file(list_path: str) -> list:
+def get_notes_from_list(list_path: str) -> list:
     """
     Get and returns a python list containing notes from a list file
     """
@@ -43,7 +44,7 @@ def print_notes(l: list) -> None:
     """
     Format a python list of notes to print
     """
-    pass
+    print(l)
 
 
 def remove_note_from_list(id: int) -> None:
