@@ -4,7 +4,8 @@ import click
 
 from pylista.defaults import LISTS_DIR
 from pylista.lists import (add_note_to_list, create_json_file,
-                           get_notes_from_list, print_notes, remove_note_from_list)
+                           get_notes_from_list, print_notes,
+                           remove_note_from_list)
 
 
 @click.group()
@@ -41,7 +42,7 @@ def remove(list, id):
 def ls(list):
     """List notes"""
     list_path = _make_path_to_list(list)
-    
+
     if not os.path.exists(list_path):
         click.secho("\nList does not exists!\n", fg="yellow")
     else:

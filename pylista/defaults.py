@@ -1,5 +1,5 @@
-from pathlib import Path
 import os
+from pathlib import Path
 
 HOME_DIR = str(Path.home())
 DIR_NAME = ".pylista"

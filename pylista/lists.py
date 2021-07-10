@@ -12,9 +12,7 @@ def create_json_file(list_name: str) -> str:
         os.makedirs(LISTS_DIR)
 
     path = os.path.join(LISTS_DIR, list_name)
-    data = {
-        "notes": []
-        }
+    data = {"notes": []}
     with open(f"{path}.json", "w+") as f:
         json.dump(data, f)
     return path
