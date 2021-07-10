@@ -4,7 +4,7 @@ import click
 
 from pylista.defaults import LISTS_DIR
 from pylista.lists import (add_note_to_list, create_json_file,
-                           get_notes_from_list, print_notes)
+                           get_notes_from_list, print_notes, remove_note_from_list)
 
 
 @click.group()
@@ -17,7 +17,7 @@ def cli():
 @click.argument("list")
 @click.argument("note")
 def add(list, note):
-    """Add a new task"""
+    """Add a note to list"""
     list_path = _make_path_to_list(list)
 
     if not os.path.exists(list_path):
@@ -28,14 +28,17 @@ def add(list, note):
 
 
 @cli.command()
-def remove():
-    """Remove a note"""
-    pass
+@click.argument("list")
+@click.argument("id")
+def remove(list, id):
+    """Remove a note from list"""
+    list_path = _make_path_to_list(list)
+    remove_note_from_list(int(id), list_path)
 
 
 @cli.command()
 @click.argument("list")
-def list(list):
+def ls(list):
     """List notes"""
     list_path = _make_path_to_list(list)
     
@@ -48,7 +51,7 @@ def list(list):
 
 @cli.command()
 @click.argument("list")
-def new_list(list):
+def newls(list):
     """
     Create a new list
     """
