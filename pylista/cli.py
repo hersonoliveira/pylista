@@ -31,10 +31,14 @@ def add(list, note):
 @cli.command()
 @click.argument("list")
 @click.argument("id")
-def remove(list, id):
+def rm(list, id):
     """Remove a note from list"""
     list_path = _make_path_to_list(list)
-    remove_note_from_list(int(id), list_path)
+    try:
+        remove_note_from_list(int(id), list_path)
+        click.secho(f"\nRemoved note {id} from list {list}\n", fg="green")
+    except IndexError:
+        click.secho("\nNote doesn't exist!\n", fg="yellow")
 
 
 @cli.command()

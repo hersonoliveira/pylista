@@ -43,6 +43,8 @@ def print_notes(list_obj: list) -> None:
     Format a python list of notes to print
     """
     print("\n")
+    if len(list_obj) == 0:
+        print("List is empty\n")
     for i, l in enumerate(list_obj):
         print(f"  {i}: {l}\n")
 
